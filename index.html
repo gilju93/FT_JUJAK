@@ -69,7 +69,7 @@
 
     function renderPairList() {
       const list = document.getElementById("pairList");
-      list.innerHTML = "<h3>입력된 팀 목록</h3>";
+      list.innerHTML = "<h3>라인 별 인원 목록</h3>";
       pairs.forEach((pair, index) => {
         list.innerHTML += `<div>${index + 1}. ${pair[0]} - ${pair[1]}</div>`;
       });
@@ -96,9 +96,9 @@
       });
 
       const resultDiv = document.getElementById("result");
-      resultDiv.innerHTML = "<h3>무작위 팀 결과</h3>";
+      resultDiv.innerHTML = "<h3>팀 구성 결과</h3>";
       shuffled.forEach((pair, index) => {
-        resultDiv.innerHTML += `<div>팀 ${index + 1}: ${pair[0]} & ${pair[1]}</div>`;
+        resultDiv.innerHTML += `<div>팀 ${index + 1}: ${pair[0]} vs ${pair[1]}</div>`;
       });
     }
   </script>
