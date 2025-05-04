@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>팀 뽑기 페이지</title>
+  <title>라인 뽑기 페이지</title>
   <style>
     body { font-family: sans-serif; padding: 2rem; }
     input { margin: 0.3rem; }
@@ -11,11 +11,11 @@
   </style>
 </head>
 <body>
-  <h1>팀 뽑기</h1>
+  <h1>라인인 뽑기</h1>
   
   <div>
-    <input type="text" id="name1" placeholder="이름 1" />
-    <input type="text" id="name2" placeholder="이름 2" />
+    <input type="text" id="name1" placeholder="참여자 명" />
+    <input type="text" id="name2" placeholder="참여자 명" />
     <button onclick="addPair()">추가</button>
   </div>
 
@@ -67,9 +67,9 @@
       }
 
       const resultDiv = document.getElementById("result");
-      resultDiv.innerHTML = "<h3>무작위 팀 결과</h3>";
+      resultDiv.innerHTML = "<h3>팀 구성성 결과</h3>";
       shuffled.forEach((pair, index) => {
-        resultDiv.innerHTML += `<div>팀 ${index + 1}: ${pair[0]} & ${pair[1]}</div>`;
+        resultDiv.innerHTML += `<div>라인 ${index + 1}: ${pair[0]} & ${pair[1]}</div>`;
       });
     }
   </script>
