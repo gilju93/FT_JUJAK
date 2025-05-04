@@ -11,7 +11,7 @@
   </style>
 </head>
 <body>
-  <h1>라인인 뽑기</h1>
+  <h1>라인 뽑기</h1>
   
   <div>
     <input type="text" id="name1" placeholder="참여자 명" />
@@ -30,48 +30,32 @@
   <script>
     const pairs = [];
 
-    function addPair() {
-      const name1 = document.getElementById("name1").value.trim();
-      const name2 = document.getElementById("name2").value.trim();
-
-      if (!name1 || !name2) {
-        alert("두 명의 이름을 모두 입력하세요.");
-        return;
-      }
-
-      pairs.push([name1, name2]);
-      document.getElementById("name1").value = '';
-      document.getElementById("name2").value = '';
-      renderPairList();
-    }
-
-    function renderPairList() {
-      const list = document.getElementById("pairList");
-      list.innerHTML = "<h3>입력된 팀 목록</h3>";
-      pairs.forEach((pair, index) => {
-        list.innerHTML += `<div>${index + 1}. ${pair[0]} - ${pair[1]}</div>`;
-      });
-    }
-
     function shuffleTeams() {
-      if (pairs.length === 0) {
-        alert("팀을 먼저 입력해주세요!");
-        return;
-      }
+  if (pairs.length === 0) {
+    alert("팀을 먼저 입력해주세요!");
+    return;
+  }
 
-      // Fisher-Yates Shuffle
-      const shuffled = pairs.slice();
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-      }
+  // 팀 리스트 섞기
+  const shuffled = pairs.slice();
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
 
-      const resultDiv = document.getElementById("result");
-      resultDiv.innerHTML = "<h3>팀 구성성 결과</h3>";
-      shuffled.forEach((pair, index) => {
-        resultDiv.innerHTML += `<div>라인 ${index + 1}: ${pair[0]} & ${pair[1]}</div>`;
-      });
+  // 팀 내부 사람들 위치도 무작위로 섞기
+  shuffled.forEach(pair => {
+    if (Math.random() < 0.5) {
+      [pair[0], pair[1]] = [pair[1], pair[0]]; // 순서 바꾸기
     }
+  });
+
+  const resultDiv = document.getElementById("result");
+  resultDiv.innerHTML = "<h3>무작위 팀 결과</h3>";
+  shuffled.forEach((pair, index) => {
+    resultDiv.innerHTML += `<div>팀 ${index + 1}: ${pair[0]} & ${pair[1]}</div>`;
+  });
+}
   </script>
 </body>
 </html>
